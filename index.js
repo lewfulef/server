@@ -41,7 +41,7 @@ mercadopago.configure({
 
 // A. GUITARRAS
 
-app.get("/obtener-guitarras", async (req, res) => {
+app.get("/la-dona-gatona/obtener-guitarras", async (req, res) => {
     try {
         const guitarras = await Guitarra.find({})
 
@@ -56,7 +56,7 @@ app.get("/obtener-guitarras", async (req, res) => {
     }
 })
 
-app.get("/obtener-guitarra/:id", async (req, res) => {
+app.get("/la-dona-gatona/obtener-guitarra/:id", async (req, res) => {
 
     const { id } = req.params
 
@@ -77,7 +77,7 @@ app.get("/obtener-guitarra/:id", async (req, res) => {
 
 })
 
-app.post("/crear-guitarra", async (req, res) => {
+app.post("/la-dona-gatona/crear-guitarra", async (req, res) => {
 
     const {
         nombre,
@@ -101,7 +101,7 @@ app.post("/crear-guitarra", async (req, res) => {
     }
 })
 
-app.put("/actualizar-guitarra", async (req, res) => {
+app.put("/la-dona-gatona/actualizar-guitarra", async (req, res) => {
 
     const { id, nombre, precio } = req.body
 
@@ -121,7 +121,7 @@ app.put("/actualizar-guitarra", async (req, res) => {
 
 })
 
-app.delete("/borrar-guitarra", async (req, res) => {
+app.delete("/la-dona-gatona/borrar-guitarra", async (req, res) => {
 
     const { id } = req.body
 
@@ -142,7 +142,7 @@ app.delete("/borrar-guitarra", async (req, res) => {
 
 // B. USUARIOS
 // CREAR UN USUARIO
-app.post("/usuario/crear", async (req, res) => {
+app.post("/la-dona-gatona/usuario/crear", async (req, res) => {
 
     // OBTENER USUARIO, EMAIL Y PASSWORD DE LA PETICIÓN
     const { name, email, password } = req.body
@@ -197,7 +197,7 @@ app.post("/usuario/crear", async (req, res) => {
 
 
 // INICIAR SESIÓN
-app.post("/usuario/iniciar-sesion", async (req, res) => {
+app.post("/la-dona-gatona/usuario/iniciar-sesion", async (req, res) => {
 
     // OBTENEMOS EL EMAIL Y EL PASSWORD DE LA PETICIÓN
     const { email, password } = req.body
@@ -254,7 +254,7 @@ app.post("/usuario/iniciar-sesion", async (req, res) => {
 
 // COMO OBSERVACIÓN, ESTAMOS EJECUTANDO EL MIDDLEWARE DE AUTH (AUTORIZACIÓN) ANTES DE ACCEDER
 // A LA RUTA PRINCIPAL
-app.get("/usuario/verificar-usuario", auth, async (req, res) => {
+app.get("/la-dona-gatona/usuario/verificar-usuario", auth, async (req, res) => {
 
     try {
         // CONFIRMAMOS QUE EL USUARIO EXISTA EN BASE DE DATOS Y RETORNAMOS SUS DATOS, EXCLUYENDO EL PASSWORD
@@ -271,7 +271,7 @@ app.get("/usuario/verificar-usuario", auth, async (req, res) => {
 })
 
 // ACTUALIZAR USUARIO
-app.put("/usuario/actualizar", auth, async (req, res) => {
+app.put("/la-dona-gatona/usuario/actualizar", auth, async (req, res) => {
 
     // CAPTURAMOS USUARIO DEL FORMULARIO
     const newDataForOurUser = req.body
@@ -300,7 +300,7 @@ app.put("/usuario/actualizar", auth, async (req, res) => {
 // C. CHECKOUT MERCADOPAGO
 
 
-app.post("/mercadopago", async (req, res) => {
+app.post("/la-dona-gatona/mercadopago", async (req, res) => {
 
     const preference = req.body
   
